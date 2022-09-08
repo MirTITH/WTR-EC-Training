@@ -1,26 +1,18 @@
 #include <stdio.h>
 
-int Add(int x, int y)
+void PrintNum(int num)
 {
-	return x + y;
+	printf("%d\n", num);
 }
 
 void PrintAdd(int x, int y)
 {
-	int result = Add(x, y);
-
-	printf("%d\n", result);
-}
-
-int TriAdd(int x, int y, int z)
-{
-    int temp = Add(x, y);
-    return Add(temp, z);
+	PrintNum(x + y);
 }
 
 void PrintTriAdd(int x, int y, int z)
 {
-    printf("%d\n", TriAdd(x, y, z));
+    PrintNum(x + y + z);
 }
 
 int main()

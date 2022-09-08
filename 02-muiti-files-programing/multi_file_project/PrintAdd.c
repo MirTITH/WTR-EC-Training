@@ -1,16 +1,14 @@
 #include "PrintAdd.h"
 #include <stdio.h>
 
-static int Add(int x, int y);
+static void PrintNum(int num);
 
 void PrintAdd(int x, int y)
 {
-	int result = Add(x, y);
-
-	printf("%d\n", result);
+	PrintNum(x + y);
 }
 
-static int Add(int x, int y)
+static void PrintNum(int num)
 {
-	return x + y;
+	printf("%d\n", num);
 }
