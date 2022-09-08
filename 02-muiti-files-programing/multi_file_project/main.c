@@ -1,8 +1,5 @@
 #include "PrintAdd.h"
-#include "PrintAdd.h"
 #include "TriAdd.h"
-#include "TriAdd.h"
-
 
 int main()
 {
