@@ -4,7 +4,7 @@ Copyright (C) 2022 WTRobot HITsz. All rights reserved.
 
 ## 目录导航
 
-> 建议直接点进代码栏自己看，可能会忘记在这里更新
+> 可能会忘记在这里更新，建议直接点进代码栏(或 View Code)
 
 [01-stm32基础，环境配置](./01-stm32基础，环境配置/)
 
