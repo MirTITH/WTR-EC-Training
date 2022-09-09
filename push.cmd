@@ -1,4 +1,3 @@
-git pull gitee
-git pull origin
+git pull
 git push gitee
 git push origin
