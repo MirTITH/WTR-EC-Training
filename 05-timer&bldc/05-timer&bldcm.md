@@ -7,6 +7,7 @@ stm32定时器；定时器中断&PWM波；基于PWM的直流电机闭环控制�
 ## STM32定时器
 
 参考资料1（关注概念）：[(81条消息) STM32-定时器详解_KevinFlyn的博客-CSDN博客_stm32定时器](https://blog.csdn.net/qq_44016222/article/details/123507270)
+[STM32 定时器详细篇（基于HAL库） - 东小东 - 博客园 (cnblogs.com)](https://www.cnblogs.com/dongxiaodong/p/14351398.html)
 
 ## 重点*定时器中断和PWM的产生及作用
 
