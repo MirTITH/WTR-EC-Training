@@ -28,6 +28,7 @@ stm32定时器；定时器中断&PWM波；基于PWM的直流电机闭环控制�
 （1）传统旋转电机分类：直流电机；交流电机
 
 （2）市场常用：PMSM（永磁同步电机）和**BLDC**（无刷直流电机）
+https://zhuanlan.zhihu.com/p/465511084
 
 附加参考资料1（PMSM和BLDC区别浅述）：[(81条消息) 一文了解BLDC与PMSM的区别_电机与控制的博客-CSDN博客_bldc和pmsm](https://blog.csdn.net/sphinz1/article/details/109265584)
 
