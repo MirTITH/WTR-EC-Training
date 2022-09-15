@@ -2,8 +2,8 @@
  * @file uart_printf.c
  * @author X. Y.
  * @brief printf() 串口重定向
- * @version 3.0
- * @date 2022-9-11
+ * @version 3.2
+ * @date 2022-9-15
  *
  * @copyright Copyright (c) 2022
  *
@@ -13,6 +13,11 @@
 
 // 串口号配置
 static UART_HandleTypeDef *debug_huart = &huart1;
+// #define config_USE_RTOS 1 // 是否使用 RTOS，如果使用，建议打开
+
+#if (config_USE_RTOS == 1)
+#include "cmsis_os.h"
+#endif
 
 // 判断是哪个编译器。GCC 会定义 __GNUC__，ARMCCv5 会定义 __ARMCC_VERSION，ARMCCv6 会定义 __GNUC__ 和 __ARMCC_VERSION
 #if (defined __GNUC__) && (!defined __ARMCC_VERSION)
@@ -30,26 +35,30 @@ static UART_HandleTypeDef *debug_huart = &huart1;
  * @param size Number of bytes.
  * @return 成功则返回写入的字节数，否则返回 -1
  */
-int _write(int fd, char *pBuffer, int size)
+__attribute__((used)) int _write(int fd, char *pBuffer, int size)
 {
-    HAL_StatusTypeDef status = HAL_ERROR;
-
-    switch (fd)
-    {
-    case STDOUT_FILENO: // 标准输出流
-        status = HAL_UART_Transmit(debug_huart, (uint8_t *)pBuffer, size, HAL_MAX_DELAY);
-        break;
-    case STDERR_FILENO: // 标准错误流
-        status = HAL_UART_Transmit(debug_huart, (uint8_t *)pBuffer, size, HAL_MAX_DELAY);
-        break;
-    default:
-        // EBADF, which means the file descriptor is invalid or the file isn't opened for writing;
-        errno = EBADF;
-        return -1;
-        break;
+    switch (fd) {
+        case STDOUT_FILENO: // 标准输出流
+            while (HAL_UART_Transmit(debug_huart, (uint8_t *)pBuffer, size, HAL_MAX_DELAY) == HAL_BUSY) {
+#if (config_USE_RTOS == 1)
+                osThreadYield();
+#endif
+            }
+            break;
+        case STDERR_FILENO: // 标准错误流
+            while (HAL_UART_Transmit(debug_huart, (uint8_t *)pBuffer, size, HAL_MAX_DELAY) == HAL_BUSY) {
+#if (config_USE_RTOS == 1)
+                osThreadYield();
+#endif
+            }
+            break;
+        default:
+            // EBADF, which means the file descriptor is invalid or the file isn't opened for writing;
+            errno = EBADF;
+            return -1;
+            break;
     }
-
-    return (status == HAL_OK ? size : 0);
+    return size;
 }
 
 #else
@@ -71,8 +80,12 @@ int _write(int fd, char *pBuffer, int size)
  */
 int fputc(int ch, FILE *stream)
 {
-    HAL_StatusTypeDef status = HAL_UART_Transmit(debug_huart, (uint8_t *)&ch, 1, HAL_MAX_DELAY);
-    return (status == HAL_OK ? ch : EOF);
+    while (HAL_UART_Transmit(debug_huart, (uint8_t *)&ch, 1, HAL_MAX_DELAY) == HAL_BUSY) {
+#if (config_USE_RTOS == 1)
+        osThreadYield();
+#endif
+    }
+    return ch;
 }
 
 // ARMCC 默认启用半主机模式，重定向 printf 后需要关闭，防止卡死
@@ -89,7 +102,7 @@ __asm(".global __use_no_semihosting");
 
 // 关闭半主机模式后，需要自己实现一些相关系统函数
 
-const char __stdin_name[] = ":tt";
+const char __stdin_name[]  = ":tt";
 const char __stdout_name[] = ":tt";
 const char __stderr_name[] = ":tt";
 
