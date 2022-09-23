@@ -2,15 +2,8 @@
 
 Copyright (C) 2022 WTRobot HITsz. All rights reserved. 
 
-## 目录导航
-
-> 可能会忘记在这里更新，建议直接点进代码栏(或 View Code)
-
-[01-stm32基础，环境配置](./01-stm32基础，环境配置/)
-
-[02-muiti-files-programing](./02-muiti-files-programing/)
-
-[03-GPIO](./03-GPIO/)
+## 课程
+手机打开仓库网页后，点击 `View Code` 或者 `代码` 就能看到了
 
 ## 大概的培训内容和时间
 
