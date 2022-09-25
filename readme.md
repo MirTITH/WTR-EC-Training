@@ -3,7 +3,9 @@
 Copyright (C) 2022 WTRobot HITsz. All rights reserved. 
 
 ## 课程
-手机打开仓库网页后，点击 `View Code` 或者 `代码` 就能看到了
+
+在仓库的文件夹中，电脑打开网页可以直接看到  
+手机打开仓库网页后，仓库内容会被收起来，点击 `View Code` 或者 `代码` 就能看到了
 
 ## 大概的培训内容和时间
 
