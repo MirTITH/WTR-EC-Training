@@ -11,6 +11,16 @@ Copyright (C) 2022 WTRobot HITsz. All rights reserved.
 
 ## 相关链接
 
+### WTR Library
+
+[WTR Mavlink Library](https://github.com/MirTITH/WTR-Mavlink-Library)
+
+[WTR IO_retarget Library](https://github.com/MirTITH/WTR-IO_retarget-Library) （重定向 printf 和 scanf）
+
+[FreeRTOS NewLib 可重入内存管理](https://github.com/MirTITH/FreeRTOS_helpers)
+
+### 本仓库
+
 [GitHub仓库](https://github.com/MirTITH/WTR-EC-Training)
 
 [gitee仓库](https://gitee.com/tithchan/wtr-ec-training)
