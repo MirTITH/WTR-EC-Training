@@ -6,7 +6,6 @@
 
 官方链接：<https://mavlink.io/zh/>
 
-去年工程中有关 mavlink 的部分：
+WTR Mavlink Library：
 
-<https://github.com/MirTITH/DiPan_EIDE/tree/main/UserCode/mavlink>
-
+<https://github.com/MirTITH/WTR-Mavlink-Library>

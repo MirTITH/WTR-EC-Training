@@ -2,15 +2,10 @@
 
 Copyright (C) 2022 WTRobot HITsz. All rights reserved. 
 
-## 目录导航
+## 课程
 
-> 可能会忘记在这里更新，建议直接点进代码栏(或 View Code)
-
-[01-stm32基础，环境配置](./01-stm32基础，环境配置/)
-
-[02-muiti-files-programing](./02-muiti-files-programing/)
-
-[03-GPIO](./03-GPIO/)
+在仓库的文件夹中，电脑打开网页可以直接看到  
+手机打开仓库网页后，仓库内容会被收起来，点击 `View Code` 或者 `代码` 就能看到了
 
 ## 大概的培训内容和时间
 
@@ -18,9 +13,28 @@ Copyright (C) 2022 WTRobot HITsz. All rights reserved.
 
 ## 相关链接
 
-[GitHub仓库](https://github.com/MirTITH/WTR-EC-Training)
+### WTR Library
+#### WTR Mavlink Library  
 
-[gitee仓库](https://gitee.com/tithchan/wtr-ec-training)
+<https://github.com/MirTITH/WTR-Mavlink-Library>
+
+<https://gitee.com/tithchan/WTR-Mavlink-Library>
+
+#### WTR IO_retarget Library（重定向 printf 和 scanf）
+
+<https://github.com/MirTITH/WTR-IO_retarget-Library>
+
+<https://gitee.com/tithchan/WTR-Mavlink-Library>
+
+#### FreeRTOS NewLib 可重入内存管理
+
+<https://github.com/MirTITH/FreeRTOS_helpers>
+
+### 本仓库
+
+<https://github.com/MirTITH/WTR-EC-Training>
+
+<https://gitee.com/tithchan/wtr-ec-training>
 
 ## Tips
 
