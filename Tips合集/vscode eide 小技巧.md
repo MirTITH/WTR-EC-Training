@@ -92,6 +92,10 @@ vscode 会在当前目录下创建 .vscode 文件夹，里面是这个目录相�
 | 查找文件                    | ctrl + p               |                              |
 | 保存所有文件                | Ctrl + K S             |                              |
 | 切换头文件和源文件          | Alt + O                |                              |
+| 缩进左移                    | Ctrl + [               |                              |
+| 缩进右移                    | Ctrl + ]               |                              |
+| 移动一行                    | Alt+ ↑ / ↓             |                              |
+| 复制一行                    | Shift+Alt + ↓ / ↑      | 无                           |
 | Start/Continue Debug        | F5                     |                              |
 | Go to Definition            | F12                    |                              |
 | Trigger suggestion          | Ctrl+Space, Ctrl+I     |                              |
@@ -103,8 +107,6 @@ vscode 会在当前目录下创建 .vscode 文件夹，里面是这个目录相�
 | Toggle line comment         | Ctrl+ /                |                              |
 | Find                        | Ctrl+F                 |                              |
 | Replace                     | Ctrl+H                 |                              |
-| 移动一行                    | Alt+ ↑ / ↓             |                              |
-| 复制一行                    | Shift+Alt + ↓ / ↑      | 无                           |
 | Go to beginning/end of line | Home / End             |                              |
 
 > 使用双系统的小伙伴可以使用上一节的方法将 linux 和 Windows 的快捷键改成相同的
