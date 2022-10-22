@@ -1,5 +1,34 @@
 # vscode / eide 小技巧
 
+## 目录结构
+
+vscode 会在当前目录下创建 .vscode 文件夹，里面是这个目录相关的所有配置。  
+这里面的配置只与当前目录有关。vscode 会优先使用这里的配置项，这里没有配置的部分使用全局配置。
+
+.vscode 文件夹中可能有：
+
+- settings.json ：一些设置项
+- launch.json ：debug 相关的配置
+- task.json ：任务相关的配置
+
+如果打开的是 eide 工程，eide 会自动帮你配置这些文件
+
+## 不要装太多插件
+### 首先，卸载 makefile tools 这个插件
+> bug 多，eide 工作流和 ros 都用不上，还会损坏工程（篡改CubeMX工程的.s文件）
+
+有时候 vscode 右下角会有推荐插件，不要盲目点安装
+
+有时候打开 vscode 右下角会有 cmake 插件问你要不要配置之类的，如果你不玩 cmake，就不要配置
+
+## 用户代码片段
+
+1. 齿轮->配置用户代码片段
+2. 选择语言
+3. 编写代码片段（注意每个代码片段之间要加 `,`）
+
+可以帮你生成代码片段配置文件的网站 <https://snippet-generator.app/>
+
 ## 快捷键
 
 快捷键可以极大地提高工作效率。建议为一些常用操作绑定快捷键。
@@ -8,7 +37,7 @@
 
 ### 修改快捷键的方法
 
-1. 点击齿轮-键盘快捷方式
+1. 点击齿轮->键盘快捷方式
 
     ![1666419576292](image/vscodeeide小技巧/1666419576292.png)
 
@@ -62,6 +91,7 @@
 | 命令面板                    | ctrl + shift + p 或 F1 |                              |
 | 查找文件                    | ctrl + p               |                              |
 | 保存所有文件                | Ctrl + K S             |                              |
+| 切换头文件和源文件          | Alt + O                |                              |
 | Start/Continue Debug        | F5                     |                              |
 | Go to Definition            | F12                    |                              |
 | Trigger suggestion          | Ctrl+Space, Ctrl+I     |                              |
