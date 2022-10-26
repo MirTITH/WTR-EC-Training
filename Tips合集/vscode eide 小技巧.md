@@ -69,7 +69,7 @@ vscode 会在当前目录下创建 .vscode 文件夹，里面是这个目录相�
     ] // 中括号不能删
     ```
 
-### 建议修改的快捷键
+### 建议添加的快捷键
 
 - 一键编译并烧录
 
@@ -124,14 +124,15 @@ vscode 会在当前目录下创建 .vscode 文件夹，里面是这个目录相�
 烧录时在烧录配置里选择对应的`在线调试软件`
 
 Windows 系统下：
-- STLink 选 STLink 或 Openocd
-- JLink 选 JLink
-- CMSIS-DAP（比如无线调试器） 选 Openocd
+- STLink 选 STLink 或 OpenOCD、PyOCD
+- JLink 选 JLink 或 PyOCD (OpenOCD目前(v0.11)因为USB驱动问题，在 Windows 下连不上 JLink)
+- CMSIS-DAP（比如无线调试器） 选 OpenOCD 或 PyOCD
 
 Linux 下:  
-- 可以都选 Openocd
+- 可以都选 OpenOCD 或 PyOCD
+> Linux 下的 arm-none-eabi-gcc 编译器和 OpenOCD 的安装有坑，请看 [ubuntu使用eide.md](ubuntu使用eide.md) 来避坑。
 
-然后就能烧录了（记得先编译）
+然后点击烧录按钮就能烧录了（记得先编译）
 
 概念：
 > **在线调试软件**就是是下拉菜单里的 STLink, JLink, OpenOCD, pyOCD，它们是软件  
@@ -147,17 +148,20 @@ Linux 下:
 > JLink 软件只能用于 JLink 硬件调试器  
 > OpenOCD 软件理论上可以用于所有常见的硬件调试器（STLink, JLink, CMSIS-DAP等），但在 Windows 下因为驱动问题，不好用于 JLink  
 > 还有一个 pyOCD，它也可以用于所有常见的硬件调试器，甚至在使用 rtos 时可以查看每个线程运行到哪里了，感兴趣的可以尝试。
+
 ### 调试
+
+> 单片机的调试功能是 Cortex-Debug 这个插件提供的，eide 和这个插件有联动，会自动生成这个插件的配置文件（即 launch.json)
 
 调试界面如图
 
 ![1666425980402](image/vscodeeide小技巧/1666425980402.png)
 
-注意左上角选对调试软件
+注意左上角选对调试配置
 
-调试软件的配置在工程目录的 .vscode/launch.json 中
+调试配置在工程目录的 .vscode/launch.json 中
 
-在 eide 的烧录配置里选择并配置好`在线调试软件`，然后点击构建，eide 就会自动帮你配置好 launch.json
+（在 eide 的烧录配置里选择并配置好`在线调试软件`，然后点击构建，eide 就会自动帮你配置好 launch.json）
 
 > 这里即使选择 STLink 实际上也是用 Openocd 调试的（可以从 launch.json 中发现）  
 > 所以使用 STLink 也要安装 Openocd，并在烧录配置里选择 Openocd 然后构建一次，让 eide 自动帮你生成 Openocd 配置。
@@ -175,4 +179,4 @@ Linux 下:
     myArray // 查看 myArray 数组的值（根据代码中的定义自动判断长度）
     *myArray@20 // 查看 myArray 数组的值（给定大小为20）
     ```
-- 调用堆栈可以看到当前的函数是从哪里调用的（卡在 HardFault_Handler 时这里非常有用）
+- 调用堆栈可以看到当前的函数是从哪里调用的（卡在 HardFault_Handler 时这个功能非常有用）
