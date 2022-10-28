@@ -16,10 +16,41 @@ vi 和 vim 是命令行下的文本编辑软件，初学者一定想知道不小
 ls      # 列出当前目录下的东西
 ls -hal # l 表示竖着列出来；a 表示列出隐藏文件；h 会让文件大小看起来更直观（这3个字母顺序可以换）
 ll      # ls -al 的简写
-pwd     # 打印当前路径
+```
+```bash
 cd      # 切换目录
+pwd     # 打印当前路径
+```
+```bash
 code    # 打开 vscode
 code 路径 # 用 vscode 打开文件（夹）
+code . # 用 vscode 打开当前文件夹
+```
+```bash
+nautilus            # 打开 Ubuntu 的文件管理器（nautilus是文件管理器的名字）
+nautilus 文件夹路径 # 用 Ubuntu 的文件管理器打开文件夹
+```
+
+## apt 命令
+### apt 和 apt-get
+省流：这是两个不同的工具，建议用 apt
+
+### apt update 和 apt upgrade
+update 命令只会更新软件包列表，获得包的最新信息，并不会下载或者安装任何一个包。
+
+apt upgrade 命令会按照软件包列表把这些包下载和升级到最新版本。
+
+> 详细版：https://zhuanlan.zhihu.com/p/560735952
+
+### 常用命令
+```bash
+apt # 显示帮助
+sudo apt update # 更新软件包列表（只是更新列表，不会更新软件）
+sudo apt upgrade # 更新软件包
+sudo apt install 包名 # 在线安装一个包（如果已经安装，则更新这个包）
+sudo apt install 路径 # 安装本地包(deb 文件)
+sudo apt purge 包名 # 完全卸载一个包
+apt list --installed # 列出已安装的包
 ```
 
 ## 文件、路径相关
@@ -104,9 +135,13 @@ chmod 和 ls 详细说明请看 <https://zhuanlan.zhihu.com/p/355450290>
 
 Windows 下的可执行文件有后缀名`.exe`，Linux 下没有
 
-> Windows 在命令行中运行可执行文件，可以省略后缀名，因此运行 `gcc -v` 和 `gcc.exe -v`都行
+> Windows 在终端中运行可执行文件，可以省略后缀名  
+> 比如 gcc 的文件名在 Windows 下是 `gcc.exe`，在终端中可以输入`gcc.exe -v` 或者 `gcc -v`  
+> gcc 在 Linux 下文件名就叫 `gcc`，所以在终端中输入`gcc -v`  
+> 注`-v`是查看版本的参数
 
-Linux 在命令行中运行可执行文件，首先要求该文件有可执行权限
+
+Linux 在命令行中运行可执行文件，首先要求该文件有可执行权限（见[权限相关](#权限相关)）
 
 有可执行权限后，运行这个文件有两种方法：
 1.  在文件管理器里双击

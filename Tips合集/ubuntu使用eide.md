@@ -42,6 +42,8 @@ sudo apt install 安装包路径
 
 OpenOCD 有很多种方法安装，以下是其中一种方法（编译安装）
 
+> 编译安装会把可执行文件放在系统目录`/usr/local/bin/`中，因此不需要手动添加 PATH 了
+
 1. 获得源代码：
     ```bash
     git clone git://git.code.sf.net/p/openocd/code openocd
