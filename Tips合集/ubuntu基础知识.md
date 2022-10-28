@@ -10,11 +10,21 @@ vi 和 vim 是命令行下的文本编辑软件，初学者一定想知道不小
 
 ~~学会了如何退出就相当于学会了这两个软件~~
 
+## 基础命令
+
+```bash
+ls      # 列出当前目录下的东西
+ls -hal # l 表示竖着列出来；a 表示列出隐藏文件；h 会让文件大小看起来更直观（这3个字母顺序可以换）
+ll      # ls -al 的简写
+pwd     # 打印当前路径
+cd      # 切换目录
+code    # 打开 vscode
+code 路径 # 用 vscode 打开文件（夹）
+```
+
 ## 文件、路径相关
 
 Linux 中，以 `.` 开头的文件（夹）是隐藏文件（夹），如`.config`，需要在文件管理器中打开显示隐藏文件才能显示这些文件（夹）
-
-Linux 没有 Windows 中盘符的概念。Linux 中所有的文件和目录都在根目录及其子目录中。Windows 中的不同磁盘是挂载到不同的目录中的。
 
 Linux 使用一些特殊符号表示路径：
 
@@ -28,21 +38,22 @@ Linux 使用一些特殊符号表示路径：
 
 用户自己的文件建议放在家目录中，ubuntu 文件管理器中的`下载`、`文档`等文件夹都在家目录下。
 
-一般操作根目录中的文件需要 sudo, 操作家目录中的文件不需要 sudo
-
 在 ubuntu 中，使用正斜杠 `/` 表示下级目录，如 `~/Download`或`/home/用户名/Download`
 
 > Windows 下斜杠使用比较混乱。Windows 系统本身使用反斜杠 `\`，但有些软件又使用正斜杠`/`或者双反斜杠`\\`  
 > Linux 下统一使用`/`
 
 ## 权限相关
-可以使用 `sudo chmod +x 路径` 赋予一个文件可执行权限
+可以使用 `sudo chmod +x 路径` 赋予一个文件可执行权限  
+可以使用 `sudo chmod -x 路径` 删除一个文件的可执行权限
 
-可以用 `ls -hal`查看当前目录下所有的文件和文件夹以及它们的权限，如图
+可以使用 `ls -hal`或`ll`查看当前目录下所有的文件和文件夹以及它们的权限，如图
 
 ![1666438283218](image/ubuntu基础知识/1666438283218.png)
 
-从上面可以看到，每一行都有7列，分别是：
+省流版：每一行的类似这样的一串字符表示权限`rwxrwxr-x`，带有 x 的表示有可执行权限（有可执行权限的文件也会用不同颜色标记）
+
+详细版：从上面可以看到，每一行都有7列，分别是：
 - 第一列共10位
   - 第1位表示文档类型：
     - d  目录文件
@@ -64,25 +75,44 @@ Linux 使用一些特殊符号表示路径：
 chmod 和 ls 详细说明请看 <https://zhuanlan.zhihu.com/p/355450290>
 
 ## path 环境变量
-概念：<http://c.biancheng.net/view/5876.html>
+概念：Linux 执行程序时，如果没有指定路径，则会从 path 环境变量中指定的目录顺次查找。（从前往后找）
 
-如何修改：<https://cloud.tencent.com/developer/article/1720937>
+（Windows 也有类似的机制）
+
+如何修改：
+1. 打开文件 ~/.bashrc
+2. 在最后一行添上：
+    ```
+    export PATH=/new/path:$PATH
+    ```
+
+> 原理：  
+> `$PATH` 表示 PATH 环境变量的内容  
+> `:` 是 PATH 变量中，多个目录的分隔符  
+> `/new/path:$PATH` 表示在 PATH 前面添加 /new/path:  
+> `export PATH=/new/path:$PATH` 表示给 PATH 变量赋值为 /new/path:$PATH
+
+
+生效方法：（有以下两种）
+1. 关闭当前终端窗口，重新打开一个新终端窗口就能生效
+2. 输入`source ~/.bashrc`命令，立即生效
+
+查看当前的 PATH 变量：`echo $PATH`
 
 ## 程序相关
-
 程序又叫做可执行文件
 
 Windows 下的可执行文件有后缀名`.exe`，Linux 下没有
 
-> Windows 在命令行中运行可执行文件，可以省略后缀名，因此运行 `openocd` 和 `openocd.exe`都行
+> Windows 在命令行中运行可执行文件，可以省略后缀名，因此运行 `gcc -v` 和 `gcc.exe -v`都行
 
 Linux 在命令行中运行可执行文件，首先要求该文件有可执行权限
 
-Linux 下双击有可执行权限的程序，可以运行这个程序
-
-Linux 也可以在命令行中运行可执行程序，如：
-```bash
-openocd   // 在 path 环境变量中寻找一个叫 openocd 的程序并运行它
-./openocd // 运行当前目录下的 openocd
-~/Download/openocd 运行 ~/Download/ 下的 openocd
-```
+有可执行权限后，运行这个文件有两种方法：
+1.  在文件管理器里双击
+2.  在终端中运行，如：
+    ```bash
+    openocd   # 在 path 中寻找一个叫 openocd 的程序并运行它
+    ./openocd # 运行当前目录下的 openocd
+    ~/Download/openocd # 运行 ~/Download/ 目录下的 openocd
+    ```
