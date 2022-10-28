@@ -9,3 +9,5 @@
 WTR Mavlink Library：
 
 <https://github.com/MirTITH/WTR-Mavlink-Library>
+
+<https://gitee.com/tithchan/WTR-Mavlink-Library>
