@@ -37,10 +37,13 @@ git config --global user.email "邮箱"
 使用 Git History 插件，soft reset
 
 ## git 添加远程库
-1. 注册 github 账号（或者 gitee 账号（国内的一个代码托管网站））
-2. （推荐）配置 ssh 密钥（方便，而且连接 github 更顺畅）  
-   配置方法参考 <https://cloud.tencent.com/developer/article/2059781>
-3. 在网页上创建一个空仓库（一定要全空，一个文件都不要有）
+1. 注册 github 账号（或者 gitee 账号）
+2. （推荐）配置 ssh 密钥（不建议设置 ssh 密码，设置后每次连接都要输入密码）  
+   > 配置方法参考 <https://cloud.tencent.com/developer/article/2059781>  
+   > ssh 是一种安全传输协议，使用 ssh 协议连接 git 远程仓库不需要输入账号和密码，并且克隆 github 仓库更稳定更快（大部分时间能直连 github）  
+
+3. 在网页上创建一个空仓库
+   > 一定要全空，一个文件都不要有，否则本地仓库推不上去（如果发生这种情况，可以用 git push --force 强制推送，之后正常推送就行
 4. **选择 SSH 方式**（如果前面没有配置 ssh 就只能选择 http 方式），按照网页中给出的代码，给本地git仓库添加远程库并推送
 5. 刷新网页，检查是否成功推送
 
@@ -54,7 +57,7 @@ git config --global user.email "邮箱"
 > 同步按钮实际上做了先拉取再推送的操作
 
 ## 克隆远程库
-git clone 地址（注意选 SSH）
+git clone 地址（选 SSH 地址则使用 SSH 通信，选 https 则使用 https 通信）
 
 ## 拉取远程库
 点拉取（或 git pull）
