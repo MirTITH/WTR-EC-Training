@@ -110,4 +110,5 @@ OpenOCD 有很多种方法安装，以下是其中一种方法（编译安装）
     openocd -v
     ```
 
-> 编译安装的 OpenOCD 不能用 apt 卸载，需要在这个文件夹里使用 `sudo make uninstall` 卸载
+> 编译安装的 OpenOCD 不能用 apt 卸载，需要在这个文件夹里使用 `sudo make uninstall` 卸载  
+> 安装完后可以删除这个源代码目录。删除这个目录后如果想卸载 OpenOCD，需要再次按照这个教程进行完第5步，然后执行 `sudo make uninstall`
