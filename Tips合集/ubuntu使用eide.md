@@ -88,24 +88,32 @@ OpenOCD 有很多种方法安装，以下是其中一种方法（编译安装）
     sudo apt install build-essential pkg-config autoconf automake libtool libusb-dev libusb-1.0-0-dev libhidapi-dev libtool libsysfs-dev
     ```
 
-4. 引导生成环境
+4. 添加 UDEV rules
+    ```
+    sudo cp ./contrib/60-openocd.rules /etc/udev/rules.d/
+    sudo udevadm control --reload-rules
+    ```
+    > 不添加的话有些烧录器需要 root 权限才能访问  
+    > 这一步也可以在安装完成后进行，在这一步进行是因为后面的步骤比较费时
+
+5. 引导生成环境
     ```
     ./bootstrap
     ```
 
-5. 配置
+6. 配置
     ```
     ./configure
     ```
     > 此命令运行结束时会打印适配器列表，大部分 yes 就行
 
-6. 编译安装
+7. 编译安装
    ```
    make -j
    sudo make install
    ```
 
-7. 安装完成，检查版本
+8. 安装完成，检查版本
     ```
     openocd -v
     ```
